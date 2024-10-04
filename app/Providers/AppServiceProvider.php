@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Facility;
+use App\Models\Student;
+use App\Models\User;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer(['admin.layout.layout', 'admin.layout.layout'], function ($view) {
+            $facultiesCount = Facility::count();
+            $studentsCount = Student::count();
+            $adminsCount = User::where('role', 'admin')->count();
+            $usersCount = User::count();
+            $view->with([
+                'facultiesCount' => $facultiesCount,
+                'adminsCount' => $adminsCount,
+                'studentsCount' => $studentsCount,
+                'usersCount' => $usersCount,
+
+            ]);
+        });
     }
 }

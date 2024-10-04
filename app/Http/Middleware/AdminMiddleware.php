@@ -16,21 +16,23 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Retrieve user role and registration status from the session
-        $userRole = session('role');
-        $alreadyRegistered = session('already_registered');
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            // User is not authenticated, redirect to login
+            return redirect()->route('login')->withErrors('You must log in to access this page.');
+        }
+
+        // Retrieve user role from the authenticated user
+        $userRole = Auth::user()->role; // Assuming 'role' is a field in your User model
 
         // Check user role
         if ($userRole === 'admin') {
-            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
-        } elseif ($userRole === 'user') {
-            if ($alreadyRegistered === 'yes') {
-                return redirect()->route('profile'); // Redirect to profile if already registered
-            }
-            return $next($request); // Allow the request to proceed for regular users
+            return $next($request); // Allow admin to proceed to the requested route
         }
 
-        // If the user is not authenticated or has an unrecognized role, redirect to login
-        return redirect()->route('login');
+        // If the user is authenticated but not an admin, log them out and redirect to login
+        Auth::logout();
+        session()->flush();
+        return redirect()->route('login')->withErrors('You are not authorized to access this page.');
     }
 }

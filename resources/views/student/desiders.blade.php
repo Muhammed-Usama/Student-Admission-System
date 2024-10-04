@@ -10,14 +10,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Education Information</h3>
                         </div>
-                        @if (session('education_info'))
-                            <ul>
-                                <li>seta num: {{ session('education_info.seatnum') }}</li>
-                                <li>grade: {{ session('education_info.grade') }}</li>
-                                <li>Division: {{ session('education_info.division') }}</li>
-                            </ul>
-                        @else
-                            <p>No student information found in session.</p>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
                         <form action="{{ route('student.store') }}" method="post">
                             @csrf

@@ -26,7 +26,7 @@ class FacilityController extends Controller
             'name' => 'required|string',
             'minratio' => 'required|numeric',
             'maxavailableno' => 'required|numeric',
-            'programrequirement_id' => 'required', // Adjust table name as necessary
+            'programrequirement_id' => 'required|exists:program_requirements,id', // Adjust table name as necessary
         ]);
 
         // Create the data array
@@ -60,7 +60,7 @@ class FacilityController extends Controller
         $faculty = Facility::findOrFail($id);
         return view('admin.faculty.edit', compact('faculty'));
     }
-    public function update(Request $request, )
+    public function update(Request $request)
     {
         // Validate the request
         $id = $request->id;

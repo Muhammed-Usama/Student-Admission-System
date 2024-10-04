@@ -14,7 +14,7 @@
                 <img src="{{ asset('/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin</a>
+                <a href="{{ route('admin.dashboard') }}" class="d-block">Admin</a>
             </div>
         </div>
 
@@ -37,35 +37,72 @@
                 data-accordion="false">
 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
+
+                {{-- Users --}}
                 <li class="nav-item">
-                    <a href="{{ route('sendmail') }}" class="nav-link">
-                        <i class="fa-solid fa-envelope"></i>
-                        <p>Send Emails</p>
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
+                        <p>
+                            Admins
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">{{ $usersCount }}</span>
+
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admins.show') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Admins</p>
+                                <span class="badge badge-info right">{{ $adminsCount }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.show') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admins.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Admin</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('finaldesire') }}" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <p>Generate Desire</p>
-                    </a>
-                </li>
+
+                {{-- Student --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-user-graduate"></i>
                         <p>
                             Students
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right">{{ $studentsCount }}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('finaldesire') }}" class="nav-link">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <p>Generate Desire</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sendmail') }}" class="nav-link">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>Send Emails</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -78,13 +115,17 @@
                                 <p>Show All students</p>
                             </a>
                         </li>
+
                     </ul>
+                </li>
+                {{-- Faculty --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-chalkboard-teacher"></i>
                         <p>
                             Faculties
                             <i class="right fas fa-angle-left"></i>
+                            <span class="badge badge-info right">{{ $facultiesCount }}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">

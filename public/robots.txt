@@ -1,2 +1,64 @@
 User-agent: *
 Disallow:
+
+Public Routes:
+Login Page (GET: /log)
+Name: login
+Login Action (POST: /login)
+Handles user login.
+Signup Action (POST: /signup)
+Name: signup
+Handles user registration.
+Protected Routes (Requires LoginAuth middleware):
+Home Page (GET: /)
+View: welcome
+Admin Routes:
+Admin Dashboard (GET: /admin/dashboard)
+Name: admin.dashboard
+Admin dashboard view.
+Faculty Routes:
+Faculty Index (GET: /faculty/index)
+Name: faculty.index
+View all faculties.
+Create Faculty (GET: /faculty/create)
+Name: faculty.create
+View form to create a new faculty.
+Store Faculty (POST: /faculty/store)
+Name: faculty.store
+Handle faculty creation.
+Edit Faculty (GET: /faculty/edit/{id})
+Name: faculty.edit
+Edit faculty details.
+Delete Faculty (GET: /faculty/delete/{id})
+Name: faculty.delete
+Delete a faculty.
+Update Faculty (POST: /faculty/update)
+Name: faculty.update
+Update faculty details.
+Student Routes:
+Student Dashboard (GET: /student)
+Name: student
+View student dashboard.
+Student Education (POST: /student/education)
+Name: student.education
+Submit student education details.
+Student Desider (POST: /student/desider)
+Name: student.desider
+Submit student desider (preferences).
+Store Student (POST: /student/store)
+Name: student.store
+Store student data.
+Miscellaneous Routes:
+Final Desire (GET: /finaldesire)
+Name: finaldesire
+View or handle final student desires.
+Send Mail (GET: /sendmail)
+Name: sendmail
+Trigger sending an email.
+Profile Page (GET: /profile)
+Name: profile
+View user profile.
+Logout Route:
+Logout (GET: /logout)
+Name: logout
+Logout user.

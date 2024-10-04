@@ -27,7 +27,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto"> <!-- Use ms-auto to align items to the right -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/logout') }}">Log out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        <a href="#" class="nav-link"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +49,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-3">
                                 <div class="text-center border-end">
-                                    <img src="{{ asset($student->student_photo) }}"
+                                    <img src="{{ Storage::url($student->student_photo) }}"
                                         class="img-fluid avatar-xxl rounded-circle" alt>
                                     <h4 class="text-danger font-size-20 mt-3 mb-2">{{ $student->name }}</h4>
                                 </div>
@@ -143,7 +149,8 @@
                                         <div class="card-body">
                                             <div class="mb-4">
                                                 <h5 class="mb-1 font-size-17 team-title">Date of Birth</h5>
-                                                <p class="text-muted mb-0 team-description">{{ $student->dateofbirth }}
+                                                <p class="text-muted mb-0 team-description">
+                                                    {{ $student->dateofbirth }}
                                                 </p>
                                             </div>
                                         </div>

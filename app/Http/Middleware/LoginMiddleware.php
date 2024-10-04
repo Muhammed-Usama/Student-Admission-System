@@ -18,7 +18,7 @@ class LoginMiddleware
     {
 
 
-        if (!Auth::guard(name: 'user')->check()) {
+        if (!Auth::check()) {
             // Redirect to admin login if not authenticated
             return response()->view('login');
         }
