@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Facility;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,17 +12,16 @@ class AdminsController extends Controller
 {
     public function index()
     {
-
         return view('admin.dashboard'); // Use 'facultiesCount'
     }
     public function show()
     {
-        $admins = User::where('role', 'admin')->get();
+        $admins = Admin::all();
         return view('admin.users.index', compact('admins'));
     }
     public function usershow()
     {
-        $users = User::where('role', 'user')->get();
+        $users = User::all();
         return view('admin.users.user', compact('users'));
     }
     public function create()
@@ -87,4 +87,5 @@ class AdminsController extends Controller
         // Redirect back with a success message
         return redirect()->route('admins.show')->with('message', 'User role updated successfully!');
     }
+
 }

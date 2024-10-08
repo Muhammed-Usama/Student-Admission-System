@@ -78,6 +78,36 @@
                         </li>
                     </ul>
                 </li>
+                @php
+                    $isAdmin = Auth::guard('admin')->check() && Auth::guard('admin')->user()->role === 'adminstrator';
+                @endphp
+                {{-- IPS --}}
+                @if ($isAdmin)
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>
+                                Admins IPS
+
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('ip.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Admins IPS</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('ip.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Admin IP</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
 
                 {{-- Student --}}
                 <li class="nav-item">

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
 use App\Models\Facility;
 use App\Models\Student;
 use App\Models\User;
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['admin.layout.layout', 'admin.layout.layout'], function ($view) {
             $facultiesCount = Facility::count();
             $studentsCount = Student::count();
-            $adminsCount = User::where('role', 'admin')->count();
+            $adminsCount = Admin::count();
             $usersCount = User::count();
             $view->with([
                 'facultiesCount' => $facultiesCount,

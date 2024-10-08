@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,18 +21,17 @@ class DatabaseSeeder extends Seeder
         $password = Hash::make('123456');
 
         // Create users with the factory
-        User::factory()->create([
+        Admin::insert([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => $password,
-            'role' => 'admin'
+            'role' => 'adminstrator'
         ]);
 
         User::factory()->create([
             'name' => 'Mohammed',
             'email' => 'youssef.omara.2112008@gmail.com',
             'password' => $password,
-            'role' => 'user'
         ]);
     }
 }

@@ -35,16 +35,16 @@ class LoginController extends Controller
      * @param  mixed  $user
      * @return mixed
      */
-    protected function authenticated(Request $request, $user) // Correctly type-hinted Request
-    {
-        // Check user role and redirect accordingly
-        if ($user->role === 'user') {
+    // protected function authenticated(Request $request, $user) // Correctly type-hinted Request
+    // {
+    //     // Check user role and redirect accordingly
+    //     if ($user->role === 'user') {
 
-            session(['user' => $user->email]);
-            return redirect()->route('home');
-        }
-        return redirect()->route('admin.dashboard');
+    //         session(['user' => $user->email]);
+    //         return redirect()->route('home');
+    //     }
+    //     return redirect()->route('admin.dashboard');
 
-        // Default redirect for regular users
-    }
+    //     // Default redirect for regular users
+    // }
 }
