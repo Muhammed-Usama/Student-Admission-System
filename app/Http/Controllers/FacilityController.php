@@ -73,13 +73,10 @@ class FacilityController extends Controller
             'maxavailableno' => $validatedData['maxavailableno'],
             'availableno' => $validatedData['maxavailableno']
         ];
-
         // Find the faculty record by ID
         $faculty = Facility::findOrFail($id);
-
         // Update the faculty record with validated data
         $faculty->update($data);
-
         // Redirect with a success message
         return redirect()->route('faculty.index')->with('message', 'Faculty updated successfully.');
     }

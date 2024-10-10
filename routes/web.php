@@ -28,11 +28,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::controller(StudentController::class)->prefix('/student')->group(function () {
         Route::get('/', 'index')->name('student');
-        Route::post('/education', 'toeducation')->name('student.education');
-        Route::post('/desider', 'todesider')->name('student.desider');
-        Route::post('/store', 'store')->name('student.store');
+
+
+        Route::middleware('PostAuth')->group(function () {
+            Route::post('/education', 'toeducation')->name('student.education');
+            Route::post('/desider', 'todesider')->name('student.desider');
+            Route::post('/store', 'store')->name('student.store');
+        });
     });
-    Route::get('/profile', [StudentController::class, 'profile'])->name('profile');
+    Route::get('/profile', [StudentController::class, 'profile'])->name('profile')->middleware('ProfiletAuth');
 
 });
 
