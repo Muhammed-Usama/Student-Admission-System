@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\StudentAdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\WhiteListController;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,14 @@ Route::middleware(['AdminAuth'])->prefix('/admin')->group(function () {
             Route::get('/edit/{id}', 'edit')->name('faculty.edit');
             Route::get('/delete/{id}', 'delete')->name('faculty.delete');
             Route::post('/update', 'update')->name('faculty.update');
+        });
+
+        //Student
+        Route::controller(StudentAdminController::class)->group(function () {
+            Route::get('search', 'search')->name('student.search');
+            Route::post('result', 'result')->name('student.result');
+            Route::get('edit/{id}', 'edit')->name('student.edit');
+            Route::post('update', 'update')->name('student.update');
         });
 
         //IP

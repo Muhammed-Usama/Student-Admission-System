@@ -35,11 +35,11 @@ class AdminsController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users', // Check for unique email
             'password' => 'required|string|min:8', // Password confirmation
-            'role' => 'required|in:user,admin', // Ensure the role is either User or Admin
+            'role' => 'required|in:adminstrator,admin', // Ensure the role is either User or Admin
         ]);
 
         // Create a new admin user
-        $admin = new User();
+        $admin = new Admin();
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password); // Hash the password
@@ -53,7 +53,7 @@ class AdminsController extends Controller
     public function delete($id)
     {
         // Find the faculty record by ID or fail with a 404 error
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
 
         // Delete the faculty record
         $user->delete();
@@ -64,19 +64,19 @@ class AdminsController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
     public function update(Request $request)
     {
         // Validate incoming request
         $request->validate([
-            'id' => 'required|exists:users,id',
-            'role' => 'required|in:user,admin',
+            'id' => 'required|exists:admins,id',
+            'role' => 'required|in:adminstrator,admin',
         ]);
 
         // Find the user by ID
-        $user = User::find($request->id);
+        $user = Admin::find($request->id);
 
         // Update the role
         $user->role = $request->role;

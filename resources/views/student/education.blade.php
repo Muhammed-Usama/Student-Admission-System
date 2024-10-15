@@ -1,63 +1,52 @@
 @extends('student.layout.layout')
-
 @section('contant')
-    <div class="content">
-        <section class="content">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Education Information</h3>
-                        </div>
+    <form action="{{ route('student.desider') }}" method="post">
+        @csrf
+        <div class="formbold-form-title">
+            <center>
+                <h2 style="font-size: 300%;" class="">Student Admission</h2>
+                <br>
+
+                <p>
+                    Education Information
+                </p>
+            </center>
+        </div>
 
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+        <div class="formbold-mb-3">
+            <label for="seatnum" class="formbold-form-label">
+                Seat Number
+            </label>
+            <input type="text" name="seatnum" id="seatnum" class="formbold-form-input" />
+        </div>
+        <br>
 
-                        <form action="{{ route('student.desider') }}" method="post">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="seatnum">Seat Number</label>
-                                    <input type="text" name="seatnum" class="form-control" id="seatnum"
-                                        placeholder="Enter Seat Number" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="grade">Grade</label>
-                                    <input type="number" name="grade" class="form-control" id="grade" max="410"
-                                        placeholder="Enter Grade" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="division">Division</label>
-                                    <select name="division" class="form-control" id="division" required>
-                                        <option value="">Select Your Division</option>
-                                        @foreach ($divisions as $division)
-                                            @if ($division['name'] === 'علمى علوم ورياضة')
-                                            @break
-                                        @endif
-                                        <option value="{{ $division['id'] }}">{{ $division['name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">To Desiders</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="formbold-input-flex">
+            <div>
+                <label for="grade" class="formbold-form-label"> Grade </label>
+                <input type="number" name="grade" id="grade" class="formbold-form-input" />
             </div>
         </div>
-    </section>
-</div>
+
+        <br>
+        <div>
+            <label for="division" class="formbold-form-label"> Division </label>
+
+            <select name="division" id="division" class="formbold-form-input">
+                <option value="">Select Your Division</option>
+                @foreach ($divisions as $division)
+                    @if ($division['name'] === 'علمى علوم ورياضة')
+                    @break
+                @endif
+                <option value="{{ $division['id'] }}">{{ $division['name'] }}</option>
+            @endforeach
+        </select>
+    </div>
+    <br>
+
+
+    <button class="formbold-btn">To Desiders</button>
+</form>
 @endsection

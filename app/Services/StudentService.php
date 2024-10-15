@@ -102,6 +102,33 @@ class StudentService
         }
     }
 
+    public function update($studentId, $facultyId)
+    {
+        // Validate input
+        $student = Student::findOrFail($studentId);
+        $faculty = Facility::findOrFail($facultyId);
+
+        // Check criteria
+        if ($student->grade >= $faculty->minratio) {
+            if ($faculty->availableno > 0) {
+
+                $student->finaldesire_id = $faculty->id;
+                $faculty->availableno -= 1;
+                $faculty->save();
+                $student->save();
+
+                return ['Update successful'];
+            } else {
+                return ['Not Have Any Seats in this faculty'];
+            }
+        } else {
+            return ["This Grade is Lower Than of The Faculty's Grade"];
+
+        }
+
+
+    }
+
     private function uploadFile($file, $path)
     {
         return $file->store($path, 'public');

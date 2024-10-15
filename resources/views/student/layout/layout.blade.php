@@ -3,93 +3,75 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student Admission</title>
+    <title>Admission Form</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- IonIcons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-    <!-- Theme style -->
+    <!-- Favicon -->
+    <link href="{{ asset('img/logo.png') }}" rel="icon">
 
-    <link rel="stylesheet" href="{{ asset('/css/mobiscroll.javascript.min.css') }}">
-    <link rel="icon" href="{{ asset('img/fclogo.png') }}" type="image/x-icon">
-    <script src="{{ asset('/js/mobiscroll.javascript.min.js') }}"></script>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('new/css/all.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr./npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('new/lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('new/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/css/form.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    {{-- <link href="{{ asset('new/css/style.css') }}" rel="stylesheet"> --}}
+
 
 </head>
 
-<body>
+@include('layouts.header')
 
+<body class="hold-transition sidebar-mini">
+    <div class="formbold-main-wrapper">
 
-    <body class="hold-transition sidebar-mini">
-        <div class="wrapper">
-            @include('student.layout.header')
+        <div class="formbold-form-wrapper">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-
-
+            <!-- Content Wrapper. Contains page content -->
             @yield('contant')
         </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('new/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('new/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('new/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('new/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ asset('new/js/main.js') }}"></script>
+    <script src="{{ asset('new/js/index.js') }}"></script>
 
 
-        <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-        <!-- Bootstrap -->
-        <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <!-- AdminLTE -->
-        <script src="{{ asset('/js/adminlte.js') }}"></script>
+</body>
 
-        <!-- OPTIONAL SCRIPTS -->
-        <script src="{{ asset('/plugins/chart.js/Chart.min.js"') }}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{ asset('/js/demo.js') }}"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="{{ asset('/js/pages/dashboard3.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('/plugins/jszip/jszip.min.js') }}"></script>
-        <script src="{{ asset('/plugins/pdfmake/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('/plugins/pdfmake/vfs_fonts.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-        <script src="{{ asset('/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-        <script src="{{ asset('js/index.js') }}"></script>
-        <!-- AdminLTE App -->
-        {{-- <script src="{{ asset('/js/adminlte.min.js') }}"></script> --}}
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{ asset('/js/demo.js') }}"></script>
-        <!-- Page specific script -->
-        <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
-            });
-        </script>
-    </body>
+
+</html>

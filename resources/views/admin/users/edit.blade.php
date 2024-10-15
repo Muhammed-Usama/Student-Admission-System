@@ -29,8 +29,9 @@
                                     <label for="userRole">Role</label>
                                     <select class="form-control" name="role" id="userRole">
                                         <option>Select Role</option>
-                                        <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
                                         <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="adminstrator" {{ $user->role == 'adminstrator' ? 'selected' : '' }}>
+                                            Adminstrator</option>
                                     </select>
                                 </div>
                             </div>

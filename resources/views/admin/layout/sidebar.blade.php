@@ -134,18 +134,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add studnet</p>
+                            <a href="{{ route('student.search') }}" class="nav-link">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <p>Search studnet</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Show All students</p>
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
                 {{-- Faculty --}}

@@ -40,14 +40,33 @@ class StudentController extends Controller
     }
     public function todesider(StoreStudentDesireRequest $request)
     {
+        // Store validated education data
         $this->studentService->storeEducationData($request->validated());
 
-        // Determine faculties based on the division
-        $division = $request->division;
-        $faculties = Facility::whereIn('programrequirement_id', $this->getProgramRequirements($division))->get();
+        // Get validated data
+        $validatedData = $request->validated();
 
+        // Determine faculties based on the division
+        switch ($validatedData['division']) {
+            case 1:
+                $faculties = Facility::whereIn('programrequirement_id', [1, 4, 5])->get();
+                break;
+            case 2:
+                $faculties = Facility::whereIn('programrequirement_id', [2, 4, 5])->get();
+                break;
+            case 3:
+                $faculties = Facility::where('programrequirement_id', 5)->get();
+                break;
+            default:
+                $faculties = collect(); // or handle unexpected division
+        }
+
+        // Return the view with faculties
         return view('student.desiders', compact('faculties'));
     }
+
+
+
     public function store(StoreStudentRequest $request)
     {
         // Use the StudentService to handle the validated data
