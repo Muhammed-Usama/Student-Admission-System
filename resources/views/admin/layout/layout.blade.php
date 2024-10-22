@@ -3,30 +3,41 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student Admission</title>
-    <link rel="icon" href="{{ asset('img/fclogo.png') }}" type="image/x-icon">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- IonIcons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-    <!-- Theme style -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link rel="stylesheet" href="{{ asset('/css/mobiscroll.javascript.min.css') }}">
-    <script src="{{ asset('/js/mobiscroll.javascript.min.js') }}"></script>
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
+    <!-- Favicon -->
+    <link href="{{ asset('img/logo.png') }}" rel="icon">
+    <link href="new/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('new/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('new/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('new/assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 <!--
 `body` tag options:
@@ -38,8 +49,8 @@
   * sidebar-mini
 -->
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+<body>
+    <main id="main" class="main">
         @include('admin.layout.header')
         <!-- /.navbar -->
 
@@ -49,55 +60,24 @@
         <!-- Content Wrapper. Contains page content -->
         @yield('contant')
         @include('admin.layout.footer')
-    </div>
-    <!-- jQuery -->
-    <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE -->
-    <script src="{{ asset('/js/adminlte.js') }}"></script>
+        </div>
+        <!-- jQuery -->
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
 
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="{{ asset('/plugins/chart.js/Chart.min.js"') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('/js/demo.js') }}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('/js/pages/dashboard3.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('/plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('/plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
-    <!-- AdminLTE App -->
-    {{-- <script src="{{ asset('/js/adminlte.min.js') }}"></script> --}}
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('/js/demo.js') }}"></script>
-    <!-- Page specific script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+        <!-- Vendor JS Files -->
+        <script src="{{ asset('new/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/chart.js/chart.umd.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/echarts/echarts.min.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/quill/quill.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset('new/assets/vendor/php-email-form/validate.js') }}"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{{ asset('new/assets/js/main.js') }}"></script>
+
 </body>
+
+</html>

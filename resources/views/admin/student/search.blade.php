@@ -15,7 +15,7 @@
                                     placeholder="Enter The student's National ID">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-lg btn-default">
-                                        <i class="fa fa-search"></i>
+                                        <i class="bi bi-search"></i>
                                     </button>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
             @if (isset($students) && count($students) > 0)
                 <div class="row mt-4">
                     <div class="col-md-12">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -46,7 +46,7 @@
                                         <td>{{ $student->grade }}</td>
                                         <td>
                                             <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary">
-                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Edit
                                         </td>
                                     </tr>
                                 @endforeach

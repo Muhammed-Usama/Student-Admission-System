@@ -1,49 +1,60 @@
 @extends('admin.layout.layout')
 @section('contant')
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Users</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="{{ route('admins.update') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $user->id }}" />
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="userName">Name</label>
-                                    <input type="text" name="name" class="form-control" id="userName"
-                                        placeholder="Enter Name" value="{{ $user->name }}" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userEmail">Email</label>
-                                    <input type="text" name="email" class="form-control" id="userEmail"
-                                        placeholder="Enter Email" value="{{ $user->email }}" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userRole">Role</label>
-                                    <select class="form-control" name="role" id="userRole">
-                                        <option>Select Role</option>
-                                        <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                        <option value="adminstrator" {{ $user->role == 'adminstrator' ? 'selected' : '' }}>
-                                            Adminstrator</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+    <div class="pagetitle">
+        <h1>Edit Admin</h1>
+    </div><!-- End Page Title --><br><br>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
+    <section class="section dashboard">
+        <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Horizontal Form -->
+            <form action="{{ route('admins.update') }}" method="post">
+                @csrf
+                <input type="hidden" name="id" id="id" value="{{ $user->id }}" id="id" />
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputText" name="name" value="{{ $user->name }}"
+                            readonly>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-@endsection
+                <br>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputText" name="email" value="{{ $user->email }}"
+                            readonly>
+                    </div>
+                </div>
+                <br>
+                <fieldset class="row mb-3">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-10">
+
+                            <select class="form-select" aria-label="Default select example" name="role">
+                                <option>Select Role</option>
+                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="adminstrator" {{ $user->role == 'adminstrator' ? 'selected' : '' }}>
+                                    Adminstrator</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form><!-- End Horizontal Form -->
+        @endsection

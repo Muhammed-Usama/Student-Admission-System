@@ -1,26 +1,73 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Home</a>
-        </li>
-    </ul>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-sm-inline-block">
-            <form id="logout-form" action="{{ route('admin.logout') }}" method="GET" class="d-none">
-                @csrf
-            </form>
-            <a href="#" class="nav-link"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                Logout
-            </a>
-        </li>
-    </ul>
+      <div class="d-flex align-items-center justify-content-between">
+          <a href="{{ route('admin.dashboard') }}" class="logo d-flex align-items-center">
+              <img src="{{ asset('img/logo.png') }}" alt="">
+          </a>
+          <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div><!-- End Logo -->
 
 
-</nav>
+      <nav class="header-nav ms-auto">
+          <ul class="d-flex align-items-center">
+
+
+              <li class="nav-item dropdown pe-3">
+
+                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                      data-bs-toggle="dropdown">
+                      <img src="{{ asset('new/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                      <span class="d-none d-md-block dropdown-toggle ps-2">Y. Awad</span>
+                  </a><!-- End Profile Iamge Icon -->
+
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                      <li class="dropdown-header">
+                          <h6>Youssef Awad</h6>
+                          <span>Administrator</span>
+                      </li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+
+                      {{-- <li>
+                          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                              <i class="bi bi-person"></i>
+                              <span>My Profile</span>
+                          </a>
+                      </li> --}}
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+
+                      {{-- <li>
+                          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                              <i class="bi bi-gear"></i>
+                              <span>Account Settings</span>
+                          </a>
+                      </li> --}}
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+
+                      <li>
+                          <form id="logout-form" action="{{ route('admin.logout') }}" method="GET" class="d-none">
+                              @csrf
+                          </form>
+                          <a href="#" class="dropdown-item d-flex align-items-center"
+                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                              <i class="bi bi-box-arrow-right"></i>
+                              Sign Out
+                          </a>
+                      </li>
+
+                  </ul><!-- End Profile Dropdown Items -->
+              </li><!-- End Profile Nav -->
+
+          </ul>
+      </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->

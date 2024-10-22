@@ -1,45 +1,52 @@
 @extends('admin.layout.layout')
 @section('contant')
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add Faculty</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="{{ route('faculty.update') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="id" id="id" value="{{ $faculty->id }}" id="id" />
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="facultyName">Faculty Name</label>
-                                    <input type="text" name="name" class="form-control" id="facultyName"
-                                        placeholder="Enter Faculty Name" value="{{ $faculty->name }}" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="minRatio">Min Ratio</label>
-                                    <input type="text" name="minratio" class="form-control" id="minRatio"
-                                        placeholder="Enter Min Ratio" value="{{ $faculty->minratio }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="maxAvailableNum">Max Available Number</label>
-                                    <input type="text" name="maxavailableno" class="form-control" id="maxAvailableNum"
-                                        placeholder="Enter Max Available Number" value="{{ $faculty->maxavailableno }}">
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+    <div class="pagetitle">
+        <h1>Edit Faculty</h1>
+    </div><!-- End Page Title --><br><br>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
+    <section class="section dashboard">
+        <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Horizontal Form -->
+            <form action="{{ route('faculty.update') }}" method="POST">
+                @csrf
+                <input type="hidden" name="id" id="id" value="{{ $faculty->id }}" id="id" />
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Faculty Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputText" name="name"
+                            value="{{ $faculty->name }}" readonly>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-@endsection
+                <br>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Min Ratio</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail" name="minratio"
+                            value="{{ $faculty->minratio }}">
+                    </div>
+                </div>
+                <br>
+                <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Max Available Ratio</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword" name="maxavailableno"
+                            value="{{ $faculty->maxavailableno }}">
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form><!-- End Horizontal Form -->
+        @endsection

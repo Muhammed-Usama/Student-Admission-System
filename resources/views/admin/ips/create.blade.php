@@ -1,49 +1,48 @@
 @extends('admin.layout.layout')
 @section('contant')
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add Admin IP</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form action="{{ route('ip.store') }}" method="post">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="Admin Name">Name :</label>
-                                    <input type="text" name="name" class="form-control" id="Admin Name"
-                                        placeholder="Enter Admin Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ip">Admin IP Address:</label>
-                                    <input type="text" name="ip" class="form-control" id="ip"
-                                        placeholder="Enter Admin's IP">
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+    <div class="pagetitle">
+        <h1>Add Admin IPs</h1>
+    </div><!-- End Page Title --><br><br>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </div>
-                        </form>
+    <section class="section dashboard">
+        <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <!-- Horizontal Form -->
+            <form action="{{ route('ip.store') }}" method="POST">
+                @csrf
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Enter the name" class="form-control" id="inputText"
+                            name="name">
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-@endsection
+                <br>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Admin IP</label>
+                    <div class="col-sm-10">
+                        <input placeholder="Enter Admin IP" type="text" class="form-control" id="inputEmail"
+                            name="ip">
+                    </div>
+                </div>
+                <br>
+
+                <br>
+
+
+        </div>
+        </fieldset>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+        </form><!-- End Horizontal Form -->
+    @endsection

@@ -55,7 +55,10 @@ Route::middleware(['AdminAuth'])->prefix('/admin')->group(function () {
 
 
     Route::middleware(['AdminLoginAuth'])->group(function () {
+        Route::get('/traffic-data', [AdminsController::class, 'getTrafficData']);
         Route::get('/dashboard', [AdminsController::class, 'index'])->name('admin.dashboard');
+
+        Route::get('/computer-science-data', [AdminsController::class, 'getComputerScienceData']);
         //Admin Faculty
         Route::controller(FacilityController::class)->prefix('/faculty')->group(function () {
             Route::get('/', 'index')->name('faculty.index');

@@ -1,52 +1,61 @@
 @extends('admin.layout.layout')
 @section('contant')
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add Admin</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="{{ route('admins.store') }}" method="post">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="adminName">Name</label>
-                                    <input type="text" name="name" class="form-control" id="adminName"
-                                        placeholder="Enter Admin Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="adminEmail">Email</label>
-                                    <input type="email" name="email" class="form-control" id="adminEmail"
-                                        placeholder="Enter Admin Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="adminPassword">Password</label>
-                                    <input type="password" name="password" class="form-control" id="adminPassword"
-                                        placeholder="Enter Admin Password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Role</label>
-                                    <select class="form-control" name='role'>
-                                        <option>Select Role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="adminstrator">Adminstrator</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+    <div class="pagetitle">
+        <h1>Add User</h1>
+    </div><!-- End Page Title --><br><br>
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </div>
-                        </form>
+    <section class="section dashboard">
+        <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <!-- Horizontal Form -->
+            <form action="{{ route('admins.store') }}" method="post">
+                @csrf
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputText" name="name">
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-@endsection
+                <br>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" name="email">
+                    </div>
+                </div>
+                <br>
+                <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" name="password">
+                    </div>
+                </div>
+                <br>
+                <fieldset class="row mb-3">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Choose Your Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="adminstrator">Adminstrator</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </fieldset>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form><!-- End Horizontal Form -->
+
+        @endsection

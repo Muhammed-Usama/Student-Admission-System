@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Facility;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AdminsController extends Controller
 {
+
+
     public function index()
     {
         return view('admin.dashboard'); // Use 'facultiesCount'
@@ -88,4 +91,33 @@ class AdminsController extends Controller
         return redirect()->route('admins.show')->with('message', 'User role updated successfully!');
     }
 
+    public function getTrafficData()
+    {
+        // Fetch dynamic counts from the database
+        $students = Student::count();
+        $admins = Admin::count();
+        $faculties = Facility::count(); // Ensure you are using the correct model (Faculty instead of Facility)
+
+        // Dynamic data array with actual counts
+        $data = [
+            ['value' => $students, 'name' => 'Students'],
+            ['value' => $admins, 'name' => 'Admins'],
+            ['value' => $faculties, 'name' => 'Faculties']
+        ];
+
+        return response()->json($data);
+    }
+    public function getComputerScienceData()
+    {
+        $computerScienceCount = Student::where('finaldesire_id', '5')->count(); // Adjust the query based on your database schema
+
+        // You may also want to calculate the percentage change for the display
+        $previousCount = 2;
+        $percentageChange = $previousCount > 0 ? (($computerScienceCount - $previousCount) / $previousCount) * 100 : 0;
+
+        return response()->json([
+            'count' => $computerScienceCount,
+            'percentageChange' => $percentageChange,
+        ]);
+    }
 }
